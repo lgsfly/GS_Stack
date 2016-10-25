@@ -2,6 +2,7 @@
 
 int main()
 {
-        StackSample *stackSam = new StackSample();
-        stackSam->conversion();
+        StackSample stackSam;
+        //stackSam.Conversion();
+        stackSam.LineEdit();
 }

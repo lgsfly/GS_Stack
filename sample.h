@@ -4,7 +4,8 @@
 class StackSample
 {
 public:
-        void conversion();
+        void Conversion();
+        void LineEdit();
 };
 
 #endif //_SAMPLE_H

@@ -1,12 +1,12 @@
 #include "GS_Func_Stack.h"
 #include "sample.h"
 
-void StackSample::conversion()
+void StackSample::Conversion()
 {
-        SqStack S;
+        GSStackFunc<int> stackFunc;
+        GSStackFunc<int>::SqStack S;
         int N = 0;
         int e = 0;
-        GSStackFunc stackFunc;
         stackFunc.InitStack(S);
         printf( "Please Enter A NUM: " );
         scanf( "%d", &N);//Attention: %d without /n
@@ -28,4 +28,46 @@ void StackSample::conversion()
                 printf( "%d", e );
         }
         printf( "\n" );
+        stackFunc.DestroyStack( S );
 }//conversion
+
+void StackSample::LineEdit()
+{
+        GSStackFunc<char> stackFunc;
+        GSStackFunc<char>::SqStack S;
+        char c;
+        stackFunc.InitStack( S );
+        char ch = getchar();
+        while ( ch != EOF )
+        {
+                while ( ch != EOF && ch != '\n' )
+                {
+                        switch( ch )
+                        {
+                        case '#':
+                                stackFunc.Pop( S, c );
+                                break;
+                        case '@':
+                                stackFunc.ClearStack( S );
+                                break;
+                        default:
+                                stackFunc.Push( S, ch );
+                                break;
+                        }
+                        ch = getchar();
+                }
+
+                while ( stackFunc.Pop( S, c ))
+                {
+                      printf( "%c", c);
+                }
+
+                //printf( "%s", S.base );
+                stackFunc.ClearStack( S );
+                if ( ch != EOF )
+                {
+                       ch = getchar();
+                }
+        }
+        stackFunc.DestroyStack( S );
+}
